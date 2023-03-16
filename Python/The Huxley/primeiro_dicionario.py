@@ -1,23 +1,26 @@
 texto = []
 def remover_especiais(palavra):
-    caracteres_especiais = '."(*$#:'
-    
-    for i in range(0, len(palavra)):
-        if palavra[i] in caracteres_especiais:
-            palavra = palavra.replace(palavra[i], '')
-    return palavra
+    caracteres_especiais = f'."(*$#:'
+
+    for i in caracteres_especiais:
+        if (i in palavra):
+            palavra = palavra.replace(i, ' ')
+            
+    palavra = palavra.lower()
+    return palavra.split()
 
 while True:
     linha = input().split()
     
-    print('linha', linha)
+    if (linha[0] == '-1'):
+        lista = set(texto)
+        lista = sorted(lista)
+
+        for l in lista: print(f'{l} {texto.count(l)}')
+            
+        break
     
     for palavra in linha:
         formatada = remover_especiais(palavra)
-        texto.append(formatada)
-    
-    print(texto)
-        
-        
-        
-        
+        for p in formatada:
+            texto.append(p.lower())
